@@ -10,8 +10,8 @@ def __construct_triangle():
   else:
     raise ValueError from None
 
-  with urllib.request.urlopen(req) as response:
-    the_page = response.read()
+  with urllib.request.urlopen(req) as resp:
+    the_page = resp.read()
     the_page_string = the_page.decode("utf-8")
     counter = the_page_string.find("75<br />")
 
