@@ -1,9 +1,9 @@
-def SumOfDigitPowers(pow: int):
-  if not 1<pow<7:
+def SumOfDigitPowers(powr: int):
+  if not 1<powr<7:
     raise ValueError("This function expects an integer between 1 and 7")
   results=[]
-  for i in range(2,10**(pow+1)):
-    if i==sum([int(j)**pow for j in list(str(i))]):
+  for i in range(2,10**(powr+1)):
+    if i==sum([int(j)**powr for j in list(str(i))]):
       results.append(i)
   return str(sum(results))
 

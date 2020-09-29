@@ -4,29 +4,34 @@
 import urllib.request
 
 def __construct_triangle():
-  req = urllib.request.Request("https://projecteuler.net/problem=18")
-  response = urllib.request.urlopen(req)
-  the_page = response.read()
-  the_page_string = the_page.decode("utf-8")
-  counter = the_page_string.find("75<br />")
+  url = "https://projecteuler.net/problem=18"
+  if url.lower().startswith('http'):
+    req = urllib.request.Request(url)
+  else:
+    raise ValueError from None
 
-  triangle = []
-  row = []
+  with urllib.request.urlopen(req) as response:
+    the_page = response.read()
+    the_page_string = the_page.decode("utf-8")
+    counter = the_page_string.find("75<br />")
 
-  while(counter < len(the_page_string)):
-    # add number to list
-    row.append(int(the_page_string[counter:counter+2]))
-    counter += 2
+    triangle = []
+    row = []
 
-    if(the_page_string[counter] == " "):
-      counter += 1
-    elif(the_page_string[counter:counter+6] == "<br />"):
-      counter += 8 # +2 for n
-      triangle.append(row)
-      row = []
-    elif(the_page_string[counter:counter+4] == "</p>"):
-      triangle.append(row)
-      break
+    while(counter < len(the_page_string)):
+      # add number to list
+      row.append(int(the_page_string[counter:counter+2]))
+      counter += 2
+
+      if(the_page_string[counter] == " "):
+        counter += 1
+      elif(the_page_string[counter:counter+6] == "<br />"):
+        counter += 8 # +2 for n
+        triangle.append(row)
+        row = []
+      elif(the_page_string[counter:counter+4] == "</p>"):
+        triangle.append(row)
+        break
   return(triangle)
 
 def solve_triangle():
