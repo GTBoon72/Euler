@@ -1,5 +1,5 @@
 import unittest
-from PandigitalProducts import UniquePandigitalProducts as UPP, main as PP_main
+from PandigitalProducts import main as PP_main
 from io import StringIO
 import sys
 
