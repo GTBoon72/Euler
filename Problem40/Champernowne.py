@@ -9,10 +9,10 @@ def calcChampernowne(exponent: int):
     raise ValueError("Input should be an integer between 0 and 8")
   Champernowne=''
   for nr in __next_number(exponent):
-    if len(Champernowne)>10**exponent:
-      return Champernowne
-    else:
+    if not len(Champernowne)>10**exponent:
       Champernowne+=str(nr)
+    else:
+      return Champernowne
   return Champernowne
 
 def main():
