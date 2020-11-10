@@ -21,7 +21,6 @@ def PentagonNumbers():
         __nextPentagon()
       if __isPentagon(Pentagons[counter]+Pentagons[p]) and __isPentagon(Pentagons[counter]-Pentagons[p]):
         return Pentagons[counter]-Pentagons[p]
-        FoundOne=True
     counter+=1
 
 def main():
