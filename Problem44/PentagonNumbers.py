@@ -1,25 +1,16 @@
-Pentagons=[1,5,12]
+from typing import List
 
-def __nextPentagon():
-  global Pentagons
-  n=len(Pentagons)
-  Pentagons.append(int(0.5*n*(3*n-1)))
-
-def __isPentagon(p: int):
-  global Pentagons
-  if p in Pentagons:
-    return True
-  return False
+def __nextPentagon(n: int):
+  return int(0.5*n*(3*n-1))
 
 def PentagonNumbers():
-  global Pentagons
-  FoundOne=False
+  Pentagons=[1,5,12]
   counter=1
-  while not FoundOne:
+  while True:
     for p in range(counter-1):
       while Pentagons[counter]+Pentagons[p]>max(Pentagons):
-        __nextPentagon()
-      if __isPentagon(Pentagons[counter]+Pentagons[p]) and __isPentagon(Pentagons[counter]-Pentagons[p]):
+        Pentagons.append(__nextPentagon(len(Pentagons)))
+      if Pentagons[counter]+Pentagons[p],Pentagons) and __isPentagon(Pentagons[counter]-Pentagons[p],Pentagons):
         return Pentagons[counter]-Pentagons[p]
     counter+=1
 
