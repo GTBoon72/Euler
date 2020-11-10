@@ -1,7 +1,5 @@
 import csv
-
-n=1
-Triangles=[1]
+from typing import List
 
 def wordValue(word: str):
   if not all(x.isalpha() for x in word):
@@ -9,13 +7,11 @@ def wordValue(word: str):
   wV=[ord(ch)-64 for ch in sorted(word.upper())]
   return sum(wV)
 
-def __nextTriangle():
-  global n
-  global Triangles
+def __nextTriangle(n: int):
   n+=1
-  Triangles.append(int(0.5*n*(n+1)))
+  return int(0.5*n*(n+1))
 
-def __isTriangle(word: str):
+def __isTriangle(word: str, Triangles: List):
   if wordValue(word) in Triangles:
     return True
   return False
@@ -28,12 +24,12 @@ def __readWords():
   return words
 
 def main():
-  global Triangles
+  Triangles=[1]
   counter=0
   for word in __readWords():
     while wordValue(word)>max(Triangles):
-      __nextTriangle()
-    if __isTriangle(word):
+      Triangles.append(__nextTriangle(len(Triangles)))
+    if __isTriangle(word, Triangles):
       counter+=1
   print("The number of words of which the sum of the letter values is a triangle numbers, is: " +
     str(counter))
