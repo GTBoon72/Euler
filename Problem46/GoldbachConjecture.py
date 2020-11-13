@@ -16,7 +16,7 @@ def calculate_first():
     while primes[-1]<i:
       primes.append(__next_prime(primes))
     if i not in primes:
-      if not any(i==j+2*k**2 for j,k in list(product(*[primes,[x for x in range(1,int(math.sqrt(i)))]]))):
+      if not any(i==j+2*k**2 for j,k in list(product(*[primes,list(range(1,int(math.sqrt(i))))]))):
         return i
 
 def main():
