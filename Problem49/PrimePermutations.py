@@ -27,7 +27,7 @@ def validPermutations(power: int):
   for i in range(10**power-2*3330):
     i_list=__iList(i)
     if all(__isPrime(y) for y in i_list) and all(str(x) in __iPerm(i) for x in i_list):
-      valid.append(list(str(z) for z in i_list))
+      valid.append([str(z) for z in i_list])
   return valid
 
 def main():
