@@ -12,11 +12,6 @@ def __isPrime(n: int):
 
   return True
 
-def __primeGenerator():
-  for i in range(5,100,6):
-    if __isPrime(i):
-      yield i
-
 def qprimes():
   n_max_a=0
   b_max_a=0
