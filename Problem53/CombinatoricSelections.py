@@ -9,7 +9,6 @@ def validCombinations(n: int, minimum: int):
   if not 0<n<1000 or not 0<minimum<10**9:
     raise ValueError("Input should be 2 integers, smaller than 1000 and 10**9 respectively")
   count=0
-  vC=[]
   for i in range(1,n+1):
     for r in range(1,i):
       #combinations from itertool does the same, but produces memoryError for so many values
