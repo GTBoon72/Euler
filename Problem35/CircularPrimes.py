@@ -15,6 +15,7 @@ def __isPrime(n: int):
   return True
 
 def __primeGenerator(maximum: int):
+  yield 2
   for i in range(3,maximum,2):
     if __isPrime(i):
       yield i
@@ -27,7 +28,7 @@ def __primeRotations(digits: str):
 def circularPrimes(x: int):
   if not 1<x<10**7:
     raise ValueError("Input should be an integer between 1 and 10 million")
-  circular_primes=[2]
+  circular_primes=[]
   for prime in __primeGenerator(x):
     prime_rotations=[]
     for prime_rotation in __primeRotations(str(prime)):

@@ -15,7 +15,8 @@ def __isPrime(n: int):
   return True
 
 def __primeGenerator():
-  for i in range(11,10**10,2):
+  yield 2
+  for i in range(3,10**10,2):
     if __isPrime(i):
       yield i
 
@@ -24,16 +25,17 @@ def truncatablePrimes(amount:int):
     raise ValueError("The input should be an integer between 0 and 25")
   TruncatablePrimes=[]
   for prime in __primeGenerator():
-    PrimeIsTruncatable=0
-    for i in range(1,len(str(prime))):
-      if not __isPrime(int(str(prime)[i:])):
-        PrimeIsTruncatable=1
-      if not __isPrime(int(str(prime)[:-i])):
-        PrimeIsTruncatable=1
-    if PrimeIsTruncatable==0:
-      TruncatablePrimes.append(prime)
-    if len(TruncatablePrimes)==amount:
-      return TruncatablePrimes
+    if len(str(prime))>1:
+      PrimeIsTruncatable=0
+      for i in range(1,len(str(prime))):
+        if not __isPrime(int(str(prime)[i:])):
+          PrimeIsTruncatable=1
+        if not __isPrime(int(str(prime)[:-i])):
+          PrimeIsTruncatable=1
+      if PrimeIsTruncatable==0:
+        TruncatablePrimes.append(prime)
+      if len(TruncatablePrimes)==amount:
+        return TruncatablePrimes
 
 def main():
   print("The sum of all truncatable primes is: " + str(sum(truncatablePrimes(11))))
